@@ -6,11 +6,7 @@ on:
       - release
 
 jobs:
-  build_format_test:
-    uses: ./.github/workflows/ci-build-format-test.yml
-    secrets: inherit
-
   containerize:
+    name: Containerize
     uses: ./.github/workflows/containerize.yml
     secrets: inherit
-    needs: build_format_test
