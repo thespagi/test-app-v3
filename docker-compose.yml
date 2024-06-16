@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    command: npm start
+    ports:
+      - "3000:3000"
+
+  database:
+    image: postgres:16
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres

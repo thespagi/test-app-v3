@@ -1,0 +1,11 @@
+name: CI - Deploy
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    uses: ./.github/workflows/ci-release.yml
+    secrets: inherit

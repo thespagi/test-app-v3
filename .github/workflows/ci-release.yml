@@ -1,0 +1,15 @@
+name: CI - Release
+
+on:
+  push:
+    branches:
+      - release
+  pull_request:
+    branches:
+      - main
+  workflow_call:
+
+jobs:
+  build_format_test:
+    uses: ./.github/workflows/ci-build-format-test.yml
+    secrets: inherit
