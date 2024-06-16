@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - release
-  pull_request:
-    branches:
-      - main
-  workflow_call:
 
 jobs:
   build_format_test:
@@ -17,3 +13,4 @@ jobs:
   containerize:
     uses: ./.github/workflows/containerize.yml
     secrets: inherit
+    needs: build_format_test
