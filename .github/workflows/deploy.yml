@@ -17,6 +17,7 @@ jobs:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_USERNAME }}
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
+          debug: true
           source: ./docker-compose.yml
           target: /root/app
 
