@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: thespagi
-  IMAGE_NAME: ${{ github.repository }}
+  USERNAME: thespagi
+  IMAGE_NAME: ${{ github.event.repository.name }}
 
 jobs:
   containerize:
@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.USERNAME }}/${{ env.IMAGE_NAME }}:latest
