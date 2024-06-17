@@ -11,13 +11,12 @@ on:
       - release/*
 
 jobs:
-  validate:
-    steps:
-      - name: Build
-        uses: ./.github/workflows/build.yml
+  name: Validate
+  build:
+    uses: ./.github/workflows/build.yml
 
-      - name: Format 
-        uses: ./.github/workflows/format.yml
+  format:
+    uses: ./.github/workflows/format.yml
 
-      - name: Test 
-        uses: ./.github/workflows/test.yml
+  test:
+    uses: ./.github/workflows/test.yml  
