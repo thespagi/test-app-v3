@@ -18,7 +18,7 @@ jobs:
         username: ${{ secrets.DIGITALOCEAN_USERNAME }}
         password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
         source: docker-compose.yml
-        target: /~/app
+        target: /root/app
 
     - name: Deploy to DigitalOcean
       uses: appleboy/ssh-action@master
