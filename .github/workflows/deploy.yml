@@ -16,7 +16,7 @@ jobs:
       with:
         host: ${{ secrets.DIGITAL_OCEAN_HOST }}
         username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
-        password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
+        password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
         source: docker-compose.yml
         target: /app
 
