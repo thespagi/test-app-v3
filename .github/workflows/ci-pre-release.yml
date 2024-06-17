@@ -3,7 +3,7 @@ name: CI - Pre-release
 on:
   push: 
     branches:
-      - release/*
+      - release
   pull_request:
     branches:
       - main
