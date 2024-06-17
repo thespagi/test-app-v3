@@ -1,0 +1,30 @@
+name: CI - Release 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  format:
+    uses: ./.github/workflows/format.yml
+
+  test:
+    uses: ./.github/workflows/test.yml  
+
+  containerize:
+    uses: ./.github/workflows/containerize.yml
+    secrets: inherit
+    needs:
+      - build
+      - format
+      - test
+
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
+    needs:
+      - containerize
