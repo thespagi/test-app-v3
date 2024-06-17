@@ -30,6 +30,6 @@ jobs:
           username: ${{ secrets.DIGITALOCEAN_USERNAME }}
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
           script: |
-            cd root/app
+            cd app
             docker compose pull
             docker compose up -d
