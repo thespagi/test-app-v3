@@ -26,9 +26,7 @@ jobs:
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
           timeout: 120s
           rm: true
-          source: |
-            docker-compose.yml
-            .env
+          source: "docker-compose.yml,.env"
           target: app
 
       - name: Deploy to DigitalOcean
