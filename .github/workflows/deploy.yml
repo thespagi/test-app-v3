@@ -17,7 +17,6 @@ jobs:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_USERNAME }}
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
-          port: 2375
           debug: true
           timeout: 60s
           source: "docker-compose.yml"
