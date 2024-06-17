@@ -20,6 +20,7 @@ jobs:
 
   containerize:
     uses: ./.github/workflows/containerize.yml
+    secrets: inherit
     needs:
       - build
       - format
