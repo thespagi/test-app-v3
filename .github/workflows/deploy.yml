@@ -11,14 +11,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-
       - name: Create .env file
         run: |
           echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
           echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
 
-      - name: Copy Docker Compose file to DigitalOcean droplet
+      - name: Copy required files to DigitalOcean droplet
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
@@ -29,7 +28,7 @@ jobs:
           source: "docker-compose.yml,.env"
           target: app
 
-      - name: Deploy to DigitalOcean
+      - name: Start Docker Compose on DigitalOcean droplet
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
