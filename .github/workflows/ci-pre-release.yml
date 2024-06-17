@@ -1,7 +1,10 @@
-name: CI - Release 
+name: CI - Pre-release
 
 on:
-  push:
+  push: 
+    branches:
+      - release
+  pull_request:
     branches:
       - main
 
@@ -22,9 +25,3 @@ jobs:
       - build
       - format
       - test
-
-  deploy:
-    uses: ./.github/workflows/deploy.yml
-    secrets: inherit
-    needs:
-      - containerize

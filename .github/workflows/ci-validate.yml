@@ -1,0 +1,21 @@
+name: CI - Validate
+
+on:
+  push: 
+    branches:
+      - feature/*
+      - dev
+  pull_request:
+    branches:
+      - dev
+      #- release
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  format:
+    uses: ./.github/workflows/format.yml
+
+  test:
+    uses: ./.github/workflows/test.yml  
