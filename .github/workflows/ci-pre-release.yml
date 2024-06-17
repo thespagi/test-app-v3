@@ -1,0 +1,26 @@
+name: CI - Pre-release
+
+on:
+  push: 
+    branches:
+      - release/*
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+
+  format:
+    uses: ./.github/workflows/format.yml
+
+  test:
+    uses: ./.github/workflows/test.yml  
+
+  containerize:
+    uses: ./.github/workflows/containerize.yml
+    needs:
+      - build
+      - format
+      - test
