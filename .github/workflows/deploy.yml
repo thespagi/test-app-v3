@@ -5,11 +5,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  copy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+
+      - name: Create .env file
+        run: |
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+          echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
 
       - name: Copy Docker Compose file to DigitalOcean droplet
         uses: appleboy/scp-action@master
@@ -17,11 +24,12 @@ jobs:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_USERNAME }}
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
-          debug: true
           timeout: 120s
-          source: "docker-compose.yml"
-          target: app
           rm: true
+          source: |
+            docker-compose.yml
+            .env
+          target: app
 
       - name: Deploy to DigitalOcean
         uses: appleboy/ssh-action@master
