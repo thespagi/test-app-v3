@@ -7,8 +7,8 @@ on:
       - dev
   pull_request:
     branches:
-      #- dev
-      - release
+      - dev
+      #- release
 
 jobs:
   build:
