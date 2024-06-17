@@ -16,6 +16,6 @@ jobs:
       with:
         host: ${{ secrets.DIGITAL_OCEAN_HOST }}
         username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
-        key: ${{ secrets.DIGITAL_OCEAN_SSH_KEY }}
+        key: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
         script: |
           mkdir app
