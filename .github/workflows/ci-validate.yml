@@ -11,16 +11,7 @@ on:
       - release/*
 
 jobs:
-  build:
+  validate:
     uses: ./.github/workflows/build.yml
-    secrets: inherit
-
-  format:
     uses: ./.github/workflows/format.yml
-    secrets: inherit
-
-  test:
     uses: ./.github/workflows/test.yml
-    secrets: inherit
-
-  
