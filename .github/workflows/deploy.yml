@@ -11,6 +11,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Copy Docker Compose file to DigitalOcean droplet
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DIGITAL_OCEAN_HOST }}
+        username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
+        password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
+        source: docker-compose.yml
+        target: /app
+
     - name: Deploy to DigitalOcean
       uses: appleboy/ssh-action@master
       with:
@@ -18,4 +27,4 @@ jobs:
         username: ${{ secrets.DIGITAL_OCEAN_USERNAME }}
         password: ${{ secrets.DIGITAL_OCEAN_PASSWORD }}
         script: |
-          mkdir app
+          docker compose up -d
