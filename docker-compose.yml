@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    image: thespagi/test-app-v2:latest
+    image: thespagi/test-app-v3:latest
     command: npm start
     ports:
       - 3000:3000
